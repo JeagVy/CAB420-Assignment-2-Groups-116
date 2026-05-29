@@ -61,7 +61,7 @@ enron_mail_20150507/         ← raw Enron maildir data
 
 ## Key Technical Decisions
 
-- Top 10–15 authors (minimum 200 emails each after filtering)
+- Top 15 authors (minimum 200 emails each after filtering)
 - Strip everything after `"-----Original Message-----"` (forwarded content)
 - Filter emails < 20 words (auto-generated content)
 - 70/15/15 stratified split, `random_state=42`, saved to `shared_data.csv`

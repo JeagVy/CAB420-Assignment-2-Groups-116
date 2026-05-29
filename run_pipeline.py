@@ -14,7 +14,7 @@ DATA_DIR: pathlib.Path = pathlib.Path("enron_mail_20150507/maildir")
 
 PERSONAL_ACCOUNT_PATTERN: re.Pattern = re.compile(r"^[a-z]+(-[a-z0-9]+)+$")
 MIN_EMAILS: int = 200
-TOP_N: int = 20
+TOP_N: int = 15
 
 FORWARDED_MARKER: str = "-----Original Message-----"
 
@@ -170,7 +170,7 @@ if __name__ == "__main__":
     # Verification
     df_verify = pd.read_csv("shared_data.csv")
     assert list(df_verify.columns) == ["email_id", "author_label", "cleaned_body", "split"]
-    assert df_verify["author_label"].nunique() == 20
+    assert df_verify["author_label"].nunique() == TOP_N
     assert (df_verify["author_label"].value_counts() >= 200).all()
     for pattern in [r"^From:", r"^To:", r"^Subject:", r"^Date:", r"-----Original Message-----"]:
         assert not df_verify["cleaned_body"].str.contains(pattern, regex=True, na=False).any(), f"Leak: {pattern}"
