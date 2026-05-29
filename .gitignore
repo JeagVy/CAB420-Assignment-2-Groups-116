@@ -9,7 +9,6 @@ __pycache__/
 *.zip
 *.gz
 enron_mail_20150507/
-shared_data.csv
 
 # IDE
 .vscode/
